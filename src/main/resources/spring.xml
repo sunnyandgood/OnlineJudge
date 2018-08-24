@@ -19,7 +19,7 @@
     </bean>
 
     <!--sqlsessionfactory-->
-    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="com.edu.bean"/>
