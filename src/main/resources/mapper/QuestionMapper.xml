@@ -10,11 +10,15 @@
         <result column="question_title" property="questionTitle" />
         <result column="question_time" property="questionTime" />
         <result column="question_author" property="questionAuthor" />
+        <result column="question_answer" property="questionAnswer"/>
+        <result column="question_para1" property="questionPara1"/>
+        <result column="question_para2" property="questionPara2"/>
+        <result column="question_para3" property="questionPara3"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        question_id, question_chapter, question_difficult, question_title, question_time, question_author
+        question_id, question_chapter, question_difficult, question_title, question_time, question_author,question_answer,question_para1,question_para2,question_para3
     </sql>
 
 </mapper>

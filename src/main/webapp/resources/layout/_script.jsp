@@ -4,8 +4,8 @@
 
 
 <!-- 全局js -->
-<script src="${ctx}/resources/js/jquery/jquery-3.2.1.js"></script>
-<script src="${ctx}/resources/js/bootstrap-table/bootstrap-table.min.js"></script>slimscroll
+<script src="${ctx}/resources/js/jquery.min.js?v=2.1.4"></script>
+<script src="${ctx}/resources/js/bootstrap.min.js?v=3.3.6"></script>
 <script src="${ctx}/resources/js/metisMenu/jquery.metisMenu.js"></script>
 <script src="${ctx}/resources/js/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="${ctx}/resources/js/layer/layer.min.js"></script>

@@ -10,9 +10,15 @@
     <mvc:annotation-driven/>
     <!-- 访问静态资源 -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <!--<mvc:resources mapping="/img/**" location="/resources/img/"/>-->
     <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
+
+    <mvc:interceptors>
+        <bean class="com.edu.interceptor.ActionLogInterceptor"/>
+        <!--<bean class="com.edu.interceptor.LoginInterceptor"/>-->
+    </mvc:interceptors>
 </beans>

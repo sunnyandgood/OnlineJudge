@@ -1,9 +1,16 @@
 package com.edu.controller;
 
 
+import com.edu.bean.User;
+import com.edu.service.UserService;
+import com.edu.util.R;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import org.springframework.stereotype.Controller;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * <p>
@@ -13,9 +20,14 @@ import org.springframework.stereotype.Controller;
  * @author sunny
  * @since 2018-08-24
  */
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+
 
 }
 
