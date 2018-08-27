@@ -58,10 +58,19 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="${ctx}/page/adminQuestions" data-index="0">试题展示</a>
+                            <a class="J_menuItem" href="${ctx}/page/adminQuestions" data-index="0">试题管理</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="${ctx}/page/add" data-index="0">在线测试</a>
+                            <a class="J_menuItem" href="${ctx}/page/adminUserAnswer" data-index="0">用户答卷</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="${ctx}/page/adminUserScore" data-index="0">用户成绩</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="${ctx}/page/adminUser" data-index="0">用户管理</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="${ctx}/page/adminAdmin" data-index="0">管理员</a>
                         </li>
                     </ul>
                 </li>

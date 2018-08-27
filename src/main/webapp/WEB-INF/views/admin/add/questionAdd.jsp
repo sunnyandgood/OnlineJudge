@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>试题修改</title>
+    <title>添加试题</title>
     <jsp:include page="/resources/layout/_css.jsp"/>
     <link rel="stylesheet" href="${ctx}/resources/css/datapicker/bootstrap-datepicker.css">
 </head>

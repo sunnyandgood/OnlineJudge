@@ -25,7 +25,9 @@
             <div class="ibox-content">
                 <table id="table"> </table>
                 <div class="btn btn-primary" onclick="removeAll()">批量删除</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="btn btn-primary" onclick="add()">添加</div>
+                <div class="btn btn-primary" onclick="add()">添加</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="btn btn-primary" onclick="addFromExcel()">从Excel导入</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="btn btn-primary" onclick="addToExcel()">导出到Excel</div>
             </div>
         </div>
     </div>
@@ -157,6 +159,14 @@
             area: ['800px', '500px'],
             content: '${ctx}/page/questionAdd/' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
         });
+    }
+    
+    function addFromExcel() {
+        
+    }
+    
+    function addToExcel() {
+        
     }
 </script>
 </html>

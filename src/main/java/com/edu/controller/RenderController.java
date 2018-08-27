@@ -48,4 +48,44 @@ public class RenderController {
     public String questionAdd() {
         return "admin/add/questionAdd";
     }
+
+    @GetMapping("/adminUserAnswer")
+    public String adminUserAnswer(){
+        return "admin/admin_answer";
+    }
+
+    @GetMapping("/adminUserScore")
+    public String adminUserScore(){
+        return "admin/admin_score";
+    }
+
+    @GetMapping("/adminUser")
+    public String adminUser(){
+        return "admin/admin_user";
+    }
+
+    @GetMapping("/userUpdate/{id}")
+    public String userUpdate(){
+        return "admin/update/userUpdate";
+    }
+
+    @GetMapping("/userAdd")
+    public String userAdd(){
+        return "admin/add/userAdd";
+    }
+
+    @GetMapping("/adminAdmin")
+    public String adminAdmin(){
+        return "admin/admin_admin";
+    }
+
+    @GetMapping("/adminUpdate/{id}")
+    public String adminUpdate(){
+        return "admin/update/adminUpdate";
+    }
+
+    @GetMapping("/adminAdd")
+    public String adminAdd(){
+        return "admin/add/adminAdd";
+    }
 }

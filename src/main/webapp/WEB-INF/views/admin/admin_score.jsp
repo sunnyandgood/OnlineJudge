@@ -11,6 +11,6 @@
     <title>成绩展示</title>
 </head>
 <body>
-
+用户成绩
 </body>
 </html>
