@@ -36,8 +36,7 @@ public class UserLoginControl {
             if(user1.getNuserNumber().equals(user.getNuserNumber()) &&
                     user1.getUserPassword().equals(user.getUserPassword())){
                 //将登录状态放入session里
-                session.setAttribute("nuserNumber",user.getNuserNumber());
-                session.setAttribute("userPassword",user.getUserPassword());
+                session.setAttribute("user",user);
                 return R.ok();
             }
         }

@@ -11,9 +11,43 @@
         <result column="answer_id" property="answerId" />
     </resultMap>
 
+    <!-- 自定义查询映射结果 -->
+    <resultMap id="ScoreUserQuestionResultMap" type="com.edu.bean.Score">
+        <id column="score_id" property="scoreId" />
+        <result column="user_id" property="userId" />
+        <result column="question_id" property="questionId" />
+        <result column="score_degree" property="scoreDegree" />
+        <result column="answer_id" property="answerId" />
+        <association property="user" javaType="com.edu.bean.User">
+            <id column="uid" property="userId"/>
+            <result column="nuser_number" property="nuserNumber"/>
+            <result column="user_name" property="userName"/>
+            <result column="user_password" property="userPassword"/>
+        </association>
+        <association property="question" javaType="com.edu.bean.Question">
+            <id column="qid" property="questionId" />
+            <result column="question_chapter" property="questionChapter" />
+            <result column="question_difficult" property="questionDifficult" />
+            <result column="question_title" property="questionTitle" />
+            <result column="question_time" property="questionTime" />
+            <result column="question_author" property="questionAuthor" />
+            <result column="question_answer" property="questionAnswer"/>
+            <result column="question_para1" property="questionPara1"/>
+            <result column="question_para2" property="questionPara2"/>
+            <result column="question_para3" property="questionPara3"/>
+        </association>
+    </resultMap>
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         score_id, user_id, question_id, score_degree, answer_id
     </sql>
+    <select id="selectScoreUserQuestion" resultMap="ScoreUserQuestionResultMap">
+        select *,user.user_id uid,question.question_id qid from score
+        inner join user
+        on score.user_id = user.user_id
+        inner join question
+        on score.question_id = question.question_id
+    </select>
 
 </mapper>

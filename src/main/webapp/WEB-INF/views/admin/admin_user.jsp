@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>试题管理</title>
+    <title>用户管理</title>
     <jsp:include page="/resources/layout/_css.jsp"/>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="${ctx}/resources/css/bootstrap-table/bootstrap-table.min.css"/>

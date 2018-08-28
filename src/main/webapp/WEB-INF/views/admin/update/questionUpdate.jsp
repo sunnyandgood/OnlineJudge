@@ -137,10 +137,10 @@
         if(q.questionDifficult==1){
             //很简单：
             $("[name='questionDifficult']:eq(0)").prop('checked',true);
-            $(':radio').next().prop('checked',false);
-            $(':radio').next().prop('checked',false);
-            $(':radio').next().prop('checked',false);
-            $(':radio').last().prop('checked',false);
+            $("[name='questionDifficult']:eq(1)").prop('checked',false);
+            $("[name='questionDifficult']:eq(2)").prop('checked',false);
+            $("[name='questionDifficult']:eq(3)").prop('checked',false);
+            $("[name='questionDifficult']:eq(4)").prop('checked',false);
 
         }else if(q.questionDifficult==2){
             //简单:

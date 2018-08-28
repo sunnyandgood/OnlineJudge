@@ -51,19 +51,24 @@
 <script>
 
     function insert(){
+
+        alert($('[name=adminName]').val());
+        alert($('[name=adminPassword]').val());
+
         if($('[name=adminName]').val()=='') {
             layer.msg("用户名不能为空");
         }else if($('[name=adminPassword]').val()==''){
             layer.msg("密码不能为空");
+        }else {
+            $.post('${ctx}/admin/insert',$('form').serialize(),function (r) {
+                if(r.code==200){
+                    parent.$('#table').bootstrapTable('refresh');
+                    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                    parent.layer.close(index); //再执行关闭
+                }
+                layer.msg(r.message);
+            });
         }
-        $.post('${ctx}/admin/insert',$('form').serialize(),function (r) {
-            if(r.code==200){
-                parent.$('#table').bootstrapTable('refresh');
-                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                parent.layer.close(index); //再执行关闭
-            }
-            layer.msg(r.message);
-        });
     }
 </script>
 </html>

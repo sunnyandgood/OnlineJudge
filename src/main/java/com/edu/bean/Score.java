@@ -1,7 +1,9 @@
 package com.edu.bean;
 
-import com.baomidou.mybatisplus.enums.IdType;
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
+
 import java.io.Serializable;
 
 /**
@@ -22,6 +24,11 @@ public class Score implements Serializable {
     private Integer questionId;
     private Double scoreDegree;
     private Integer answerId;
+
+    @TableField(exist = false)
+    private User user;
+    @TableField(exist = false)
+    private Question question;
 
 
     public Integer getScoreId() {
@@ -64,14 +71,32 @@ public class Score implements Serializable {
         this.answerId = answerId;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
     @Override
     public String toString() {
         return "Score{" +
-        "scoreId=" + scoreId +
-        ", userId=" + userId +
-        ", questionId=" + questionId +
-        ", scoreDegree=" + scoreDegree +
-        ", answerId=" + answerId +
-        "}";
+                "scoreId=" + scoreId +
+                ", userId=" + userId +
+                ", questionId=" + questionId +
+                ", scoreDegree=" + scoreDegree +
+                ", answerId=" + answerId +
+                ", user=" + user +
+                ", question=" + question +
+                '}';
     }
 }

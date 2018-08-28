@@ -64,15 +64,16 @@
             layer.msg("姓名不能为空");
         }else if($('[name=userPassword]').val()==''){
             layer.msg("密码不能为空");
+        }else {
+            $.post('${ctx}/user/insert',$('form').serialize(),function (r) {
+                if(r.code==200){
+                    parent.$('#table').bootstrapTable('refresh');
+                    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                    parent.layer.close(index); //再执行关闭
+                }
+                layer.msg(r.message);
+            });
         }
-        $.post('${ctx}/user/insert',$('form').serialize(),function (r) {
-            if(r.code==200){
-                parent.$('#table').bootstrapTable('refresh');
-                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                parent.layer.close(index); //再执行关闭
-            }
-            layer.msg(r.message);
-        });
     }
 </script>
 </html>

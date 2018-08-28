@@ -84,5 +84,11 @@ public class QuestionController {
             return R.error("添加失败！");
         }
     }
+
+    @GetMapping("/list")
+    public R list(){
+        List<Question> questionList = questionService.selectList(null);
+        return R.ok().put("questionList",questionList);
+    }
 }
 

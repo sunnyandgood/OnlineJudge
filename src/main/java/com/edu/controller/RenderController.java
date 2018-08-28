@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/page")
 public class RenderController {
 
-    @GetMapping("/userLogin")
-    public String userLogin(){
-        return "user_login";
-    }
+//    @GetMapping("/userLogin")
+//    public String userLogin(){
+//        return "user_login";
+//    }
 
     @GetMapping("/userIndex")
     public String userIndex(){
@@ -24,10 +24,10 @@ public class RenderController {
         return "user/user_questions";
     }
 
-    @GetMapping("/adminLogin")
-    public String adminLogin(){
-        return "admin_login";
-    }
+//    @GetMapping("/adminLogin")
+//    public String adminLogin(){
+//        return "admin_login";
+//    }
 
     @GetMapping("/adminIndex")
     public String adminIndex(){
@@ -54,9 +54,15 @@ public class RenderController {
         return "admin/admin_answer";
     }
 
+
     @GetMapping("/adminUserScore")
     public String adminUserScore(){
         return "admin/admin_score";
+    }
+
+    @GetMapping("/scoreUpdate/{scoreId}")
+    public String scoreUpdate(){
+        return "admin/update/scoreUpdate";
     }
 
     @GetMapping("/adminUser")

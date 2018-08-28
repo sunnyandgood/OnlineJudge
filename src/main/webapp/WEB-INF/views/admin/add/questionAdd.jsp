@@ -115,21 +115,22 @@
 <script>
 
     function insert(){
-        // alert($('[name=questionDifficult]:selected').size());
+        // alert($('[name=questionDifficult]:checked').size());
         // alert($('[name=questionTitle]').val());
-        if($('[name=questionDifficult]:selected').size()==0) {
+        if($('[name=questionDifficult]:checked').size()==0) {
             layer.msg("试题难度不能为空");
         }else if($('[name=questionTitle]').val()==''){
             layer.msg("题目不能为空");
+        }else {
+            $.post('${ctx}/question/insert',$('form').serialize(),function (r) {
+                if(r.code==200){
+                    parent.$('#table').bootstrapTable('refresh');
+                    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                    parent.layer.close(index); //再执行关闭
+                }
+                layer.msg(r.message);
+            });
         }
-        $.post('${ctx}/question/insert',$('form').serialize(),function (r) {
-            if(r.code==200){
-                parent.$('#table').bootstrapTable('refresh');
-                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                parent.layer.close(index); //再执行关闭
-            }
-            layer.msg(r.message);
-        });
     }
 
     //datepicker:
