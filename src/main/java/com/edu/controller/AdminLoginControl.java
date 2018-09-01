@@ -26,8 +26,7 @@ public class AdminLoginControl {
             if(admin1.getAdminName().equals(admin.getAdminName()) &&
                     admin1.getAdminPassword().equals(admin.getAdminPassword())){
                 //将登录状态放入session里
-                session.setAttribute("adminName",admin.getAdminName());
-                session.setAttribute("adminPassword",admin.getAdminPassword());
+                session.setAttribute("admin",admin);
                 return R.ok();
             }
         }
@@ -36,6 +35,6 @@ public class AdminLoginControl {
 
     @GetMapping("/logout")
     public void logout(HttpSession session){
-        session.invalidate();
+//        session.invalidate();
     }
 }

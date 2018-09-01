@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LoginInterceptor implements HandlerInterceptor {
+public class AdminLoginInterceptor implements HandlerInterceptor {
     private boolean flag = false;
 
     //URL请求前使用
@@ -17,7 +17,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             throws Exception {
 
         System.out.println(request.getRequestURL());
-        if(request.getRequestURL().indexOf("/user/login")>0){
+        if(request.getRequestURL().indexOf("/admin/login")>0){
             flag = true;
             return true;
         }else {
@@ -25,28 +25,28 @@ public class LoginInterceptor implements HandlerInterceptor {
             HttpSession session = request.getSession();
 
             //判断session里的登录状态在数据库里是否存在
-                if(session.getAttribute("user") != null){
-                    flag = true;
+            if(session.getAttribute("admin") != null){
+                flag = true;
+                return true;
+            }else {
+                flag = false;
+                if(request.getRequestURL().indexOf("page")>0){
                     return true;
                 }else {
-                    flag = false;
-                    if(request.getRequestURL().indexOf("page")>0){
-                        return true;
-                    }else {
-                        return false;
-                    }
+                    return false;
                 }
             }
         }
+    }
 
-        //URL请求时（视图请求）使用
-        @Override
-        public void postHandle(HttpServletRequest request,
-                               HttpServletResponse response,
-                               Object o, ModelAndView modelAndView)
-                throws Exception {
-            if(!flag){
-                modelAndView.setViewName("forward:/user_login.jsp");
+    //URL请求时（视图请求）使用
+    @Override
+    public void postHandle(HttpServletRequest request,
+                           HttpServletResponse response,
+                           Object o, ModelAndView modelAndView)
+            throws Exception {
+        if(!flag){
+            modelAndView.setViewName("forward:/admin_login.jsp");
         }
     }
 

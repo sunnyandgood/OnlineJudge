@@ -19,6 +19,7 @@
 
     <mvc:interceptors>
         <bean class="com.edu.interceptor.ActionLogInterceptor"/>
-        <bean class="com.edu.interceptor.LoginInterceptor"/>
+        <bean class="com.edu.interceptor.UserLoginInterceptor"/>
+        <!--<bean class="com.edu.interceptor.AdminLoginInterceptor"/>-->
     </mvc:interceptors>
 </beans>
