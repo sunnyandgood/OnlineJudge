@@ -25,9 +25,9 @@ function upload(el,multi,url,webpath){
                     src = webpath+path;
                     //此处obj为上传控件  ,代表每个imageUpload
                     //回填表单
-                    obj.before('<input type="text" name="'+obj.attr('name')+'" value="'+path+'"/>');
+                    obj.before('<input type="hidden" name="'+obj.attr('name')+'" value="'+path+'"/>');
                     //填充预览图
-                    obj.after('<img src="'+src+'" style="height: 100px;"/>');
+                    // obj.after('<img src="'+src+'" style="height: 100px;"/>');
                     setTimeout(function(){
                         obj.find('.uploadify-queue-item').html('');
                     },1000);

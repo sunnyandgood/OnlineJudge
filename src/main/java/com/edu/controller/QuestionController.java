@@ -11,6 +11,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -209,13 +210,18 @@ public class QuestionController {
 //    }
 
 
-    @PostMapping("/addFromExcel")
-    public R addFromExcel(){
+    @RequestMapping("/addFromExcel")
+    public R addFromExcel(String questionPath,HttpServletRequest request){
+        //得到上传路径的硬盘路径
+        String dir = request.getServletContext().getRealPath("/");
+
+        String path = dir + questionPath;
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //读取文件
         InputStream inputStream = null;
         try {
-            inputStream = new FileInputStream("D:/qq.xlsx");
+            inputStream = new FileInputStream(path);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

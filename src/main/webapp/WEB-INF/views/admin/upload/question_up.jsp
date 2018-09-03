@@ -14,9 +14,11 @@
 </head>
 <body>
     <h1>上传题库</h1>
-    <form action="${ctx}/question/addFromExcel">
-        <div id="questionUpload" name="question"></div>
-        <input type="submit" value="提交">
+    <%--<form action="${ctx}/question/addFromExcel">--%>
+    <form>
+        <div id="questionUpload" name="questionPath"></div>
+        <%--<input type="submit" value="提交">--%>
+        <div class="btn btn-primary" onclick="add()">提交</div>
     </form>
 </body>
 <jsp:include page="/resources/layout/_script.jsp"/>
@@ -24,35 +26,15 @@
 <script src="${ctx}/resources/js/my.js"></script>
 <script>
     upload($('#questionUpload'),false,'${ctx}/upload/upload','${ctx}');
+    
+    function add() {
+        $.post('${ctx}/question/addFromExcel',$('form').serialize(),function (r) {
+            if(r.code==200){
+                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                parent.layer.close(index); //再执行关闭
+            }
+            layer.msg(r.message);
+        });
+    }
 </script>
 </html>
-
-
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-    <%--<title>Title</title>--%>
-    <%--<jsp:include page="/resources/layout/_css.jsp"/>--%>
-    <%--<link rel="stylesheet" href="${ctx}/resources/css/Huploadify/Huploadify.css">--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h1>上传相册</h1>--%>
-<%--<form action="${ctx}/uptest1">--%>
-    <%--<div id="imageUpload" name="img"></div>    &lt;%&ndash;   (上传控件)&ndash;%&gt;--%>
-    <%--<input type="submit" value="提交">--%>
-<%--</form>--%>
-
-<%--<h1>上传头像</h1>--%>
-<%--<form action="${ctx}/uptest2">--%>
-    <%--<div id="imageUpload2" name="img2"></div>    &lt;%&ndash;   (上传控件)&ndash;%&gt;--%>
-    <%--<input type="submit" value="提交">--%>
-<%--</form>--%>
-<%--</body>--%>
-<%--<jsp:include page="/resources/layout/_script.jsp"/>--%>
-<%--<script src="${ctx}/resources/js/Huploadify/jquery.Huploadify.js"></script>--%>
-<%--<script src="${ctx}/resources/js/my.js"></script>--%>
-<%--<script>--%>
-    <%--upload($('#imageUpload'),true,'${ctx}/upload2','${ctx}');--%>
-    <%--upload($('#imageUpload2'),false,'${ctx}/upload2','${ctx}');--%>
-<%--</script>--%>
-<%--</html>--%>
