@@ -162,11 +162,15 @@
     }
     
     function addFromExcel() {
-        
+        $.post('${ctx}/question/addFromExcel',function (r) {
+            layer.msg(r.message);
+        });
     }
     
     function addToExcel() {
-        
+        $.post('${ctx}/question/addToExcel',function (r) {
+            layer.msg(r.message);
+        });
     }
 </script>
 </html>
