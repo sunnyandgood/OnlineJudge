@@ -136,13 +136,86 @@ public class QuestionController {
         return R.ok("导出成功！");
     }
 
+//    @PostMapping("/addFromExcel")
+//    public R addFromExcel(){
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        //读取文件
+//        InputStream inputStream = null;
+//        try {
+//            inputStream = new FileInputStream("D:/qq.xlsx");
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//
+//        //sheet文件名
+//        String sheetName = "Sheet1";
+//        //将excel中的数据读取到String数组中
+//        String[][] values = new String[0][];
+//
+//        try {
+//            values = ExcelUtil.getValuesFromExcel(inputStream,sheetName);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        //将String数组中的数据封装到实体类
+//        boolean insert = false;
+//        for(int i=1;i<values.length;i++) {
+//            Question question = new Question();
+//            if(values[i][0]!=null) {
+//                question.setQuestionId(Integer.parseInt(values[i][0]));
+//            }
+//            question.setQuestionChapter(values[i][1]);
+//            if(values[i][2]!=null) {
+//                question.setQuestionDifficult(Integer.parseInt(values[i][2]));
+//            }
+//
+//            question.setQuestionTitle(values[i][3]);
+//
+//            if(values[i][4]!=null && !(values[i][4].equals(""))) {
+//                System.out.println(values[i][4] + " 00:00:00");
+//                try {
+//                    question.setQuestionTime(dateFormat.parse(values[i][4]+" 00:00:00"));
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+////				question.setQuestionTime(values[i][4]);
+//            }
+//
+//            question.setQuestionAuthor(values[i][5]);
+//            question.setQuestionAnswer(values[i][6]);
+//            question.setQuestionPara1(values[i][7]);
+//            question.setQuestionPara2(values[i][8]);
+//            question.setQuestionPara3(values[i][9]);
+//            //导入数据库
+////            insert = questionService.insert(question);
+////            insert = questionService.insertAllColumn(question);
+//            insert = questionService.insertOrUpdateAllColumn(question);
+//        }
+//
+//
+//        try {
+//            inputStream.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//        if (insert){
+//            return R.ok("导入成功！");
+//        }else {
+//            return R.error("导入失败！");
+//        }
+//    }
+
+
     @PostMapping("/addFromExcel")
     public R addFromExcel(){
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //读取文件
         InputStream inputStream = null;
         try {
-            inputStream = new FileInputStream("D:/qq.xls");
+            inputStream = new FileInputStream("D:/qq.xlsx");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

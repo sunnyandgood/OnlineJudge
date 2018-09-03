@@ -94,4 +94,9 @@ public class RenderController {
     public String adminAdd(){
         return "admin/add/adminAdd";
     }
+
+    @GetMapping("/questionUp")
+    public String questionUp(){
+        return "admin/upload/question_up";
+    }
 }

@@ -10,7 +10,7 @@ function upload(el,multi,url,webpath){
         var aa = function(obj){
             obj.Huploadify({
                 auto:true,
-                fileTypeExts:'*.jpg;*.png;',
+                fileTypeExts:'*.jpg;*.png;*.xls;*.xlsx;',
                 multi:multi,
                 //formData:{name:'image0'},
                 fileSizeLimit:9999,
