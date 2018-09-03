@@ -11,10 +11,9 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
@@ -138,14 +137,27 @@ public class QuestionController {
     }
 
     @PostMapping("/addFromExcel")
-    public R addFromExcel() throws Exception {
+    public R addFromExcel(){
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //读取文件
-        InputStream inputStream = new FileInputStream("D:/qq.xls");
+        InputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream("D:/qq.xls");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
         //sheet文件名
         String sheetName = "Sheet1";
         //将excel中的数据读取到String数组中
-        String[][] values = ExcelUtil.getValuesFromExcel(inputStream,sheetName);
+        String[][] values = new String[0][];
+
+        try {
+            values = ExcelUtil.getValuesFromExcel(inputStream,sheetName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         //将String数组中的数据封装到实体类
         boolean insert = false;
         for(int i=1;i<values.length;i++) {
@@ -157,21 +169,38 @@ public class QuestionController {
             if(values[i][2]!=null) {
                 question.setQuestionDifficult(Integer.parseInt(values[i][2]));
             }
+
             question.setQuestionTitle(values[i][3]);
+
             if(values[i][4]!=null && !(values[i][4].equals(""))) {
                 System.out.println(values[i][4] + " 00:00:00");
-                question.setQuestionTime(dateFormat.parse(values[i][4] + " 00:00:00"));
+                try {
+                    question.setQuestionTime(dateFormat.parse(values[i][4]+" 00:00:00"));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 //				question.setQuestionTime(values[i][4]);
             }
+
             question.setQuestionAuthor(values[i][5]);
             question.setQuestionAnswer(values[i][6]);
             question.setQuestionPara1(values[i][7]);
             question.setQuestionPara2(values[i][8]);
             question.setQuestionPara3(values[i][9]);
             //导入数据库
-            insert = questionService.insert(question);
+//            insert = questionService.insert(question);
+//            insert = questionService.insertAllColumn(question);
+            insert = questionService.insertOrUpdateAllColumn(question);
         }
-        inputStream.close();
+
+
+        try {
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         if (insert){
             return R.ok("导入成功！");
         }else {

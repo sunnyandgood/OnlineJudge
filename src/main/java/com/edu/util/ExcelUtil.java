@@ -60,7 +60,7 @@ public class ExcelUtil {
         Workbook workbook = WorkbookFactory.create(inputStream);
 
         // 第二步，在workbook中添加一个sheet,对应Excel文件中的sheet
-        Sheet sheet = workbook.createSheet(sheetName);
+        Sheet sheet = workbook.getSheet(sheetName);
 
         int rowNum = sheet.getLastRowNum();
 
@@ -73,9 +73,9 @@ public class ExcelUtil {
                 Cell cell=row.getCell(j);
                 cell.setCellType(CellType.STRING);
                 String value = null;
-//				if(!(cell.getStringCellValue().equals(""))) {
-                value=cell.getStringCellValue();
-//				}
+				if(!(cell.getStringCellValue().equals(""))) {
+                    value=cell.getStringCellValue();
+				}
 
                 System.out.println(value);
                 values[i][j] = value;
