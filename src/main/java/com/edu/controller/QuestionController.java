@@ -252,7 +252,7 @@ public class QuestionController {
             question.setQuestionTitle(values[i][3]);
 
             if(values[i][4]!=null && !(values[i][4].equals(""))) {
-                System.out.println(values[i][4] + " 00:00:00");
+//                System.out.println(values[i][4] + " 00:00:00");
                 try {
                     question.setQuestionTime(dateFormat.parse(values[i][4]+" 00:00:00"));
                 } catch (ParseException e) {

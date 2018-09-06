@@ -128,7 +128,9 @@
     }
 
     function addToExcel() {
-
+        $.post('${ctx}/score/addToExcel',function (r) {
+            layer.msg(r.message);
+        });
     }
 </script>
 </html>

@@ -122,7 +122,9 @@
 
 
     function addToExcel() {
-
+        $.post('${ctx}/answer/addToExcel',function (r) {
+            layer.msg(r.message);
+        });
     }
 </script>
 </html>

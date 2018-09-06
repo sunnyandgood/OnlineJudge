@@ -99,4 +99,9 @@ public class RenderController {
     public String questionUp(){
         return "admin/upload/question_up";
     }
+
+    @GetMapping("/userUp")
+    public String userUp(){
+        return "admin/upload/user_up";
+    }
 }
