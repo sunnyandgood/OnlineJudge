@@ -104,4 +104,9 @@ public class RenderController {
     public String userUp(){
         return "admin/upload/user_up";
     }
+
+    @GetMapping("/adminUp")
+    public String adminUp(){
+        return "admin/upload/admin_up";
+    }
 }

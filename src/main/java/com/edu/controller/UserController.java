@@ -150,14 +150,18 @@ public class UserController {
         boolean insert = false;
         for(int i=1;i<values.length;i++) {
             User user = new User();
+
             if (values[i][0]!=null){
                 user.setUserId(Integer.parseInt(values[i][0]));
             }
             if (values[i][1]!=null){
-                user.setNuserNumber(Integer.parseInt(values[i][0]));
+//                System.out.println(userPath+" 前 "+user);
+                user.setNuserNumber(Integer.parseInt(values[i][1]));
+//                System.out.println(userPath+" 后 "+user);
             }
             user.setUserName(values[i][2]);
             user.setUserPassword(values[i][3]);
+
             insert = userService.insertOrUpdateAllColumn(user);
         }
 
