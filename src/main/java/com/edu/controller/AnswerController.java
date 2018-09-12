@@ -110,9 +110,7 @@ public class AnswerController {
         Integer userId = user.getUserId();
         System.out.println("userId="+userId);
         System.out.println("questionId="+questionId);
-        List<Answer> answers = answerService.selectAnswerByUserQuestion(userId, questionId);
-        System.out.println(answers);
-        Answer answer = answers.get(0);
+        Answer answer = answerService.selectAnswerByUserQuestion(userId, questionId);
         System.out.println(answer);
         return R.ok().put("answer",answer);
     }

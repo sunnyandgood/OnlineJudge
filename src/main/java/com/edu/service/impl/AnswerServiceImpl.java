@@ -1,9 +1,9 @@
 package com.edu.service.impl;
 
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.edu.bean.Answer;
 import com.edu.mapper.AnswerMapper;
 import com.edu.service.AnswerService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,8 +27,8 @@ public class AnswerServiceImpl extends ServiceImpl<AnswerMapper, Answer> impleme
     }
 
     @Override
-    public List<Answer> selectAnswerByUserQuestion(Integer userId, Integer questionId) {
-        List<Answer> answers = baseMapper.selectAnswerByUserQuestion(userId, questionId);
-        return answers;
+    public Answer selectAnswerByUserQuestion( Integer userId, Integer questionId) {
+        Answer answer = baseMapper.selectAnswerByUserQuestion(userId, questionId);
+        return answer;
     }
 }

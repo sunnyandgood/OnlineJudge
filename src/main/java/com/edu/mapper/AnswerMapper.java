@@ -2,6 +2,7 @@ package com.edu.mapper;
 
 import com.edu.bean.Answer;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ import java.util.List;
  */
 public interface AnswerMapper extends BaseMapper<Answer> {
     List<Answer> selectAnswerUserQuestion();
-    List<Answer> selectAnswerByUserQuestion(Integer userId, Integer questionId);
+    Answer selectAnswerByUserQuestion(@Param("userId") Integer userId, @Param("questionId") Integer questionId);
 }

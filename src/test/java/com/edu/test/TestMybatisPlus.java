@@ -42,4 +42,11 @@ public class TestMybatisPlus {
         List<Score> scores = scoreService.selectScoreUserQuestion();
         System.out.println(scores);
     }
+
+    @Test
+    public void testSelectAnswerByUserQuestion(){
+        Answer answer = answerService.selectAnswerByUserQuestion(3, 3);
+        System.out.println(answer);
+    }
+
 }

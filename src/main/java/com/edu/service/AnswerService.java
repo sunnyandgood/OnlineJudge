@@ -1,7 +1,7 @@
 package com.edu.service;
 
-import com.edu.bean.Answer;
 import com.baomidou.mybatisplus.service.IService;
+import com.edu.bean.Answer;
 
 import java.util.List;
 
@@ -15,5 +15,5 @@ import java.util.List;
  */
 public interface AnswerService extends IService<Answer> {
     List<Answer> selectAnswerUserQuestion();
-    List<Answer> selectAnswerByUserQuestion(Integer userId, Integer questionId);
+    Answer selectAnswerByUserQuestion(Integer userId,Integer questionId);
 }
