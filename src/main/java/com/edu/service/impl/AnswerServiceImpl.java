@@ -25,4 +25,10 @@ public class AnswerServiceImpl extends ServiceImpl<AnswerMapper, Answer> impleme
         return answers;
 
     }
+
+    @Override
+    public List<Answer> selectAnswerByUserQuestion(Integer userId, Integer questionId) {
+        List<Answer> answers = baseMapper.selectAnswerByUserQuestion(userId, questionId);
+        return answers;
+    }
 }

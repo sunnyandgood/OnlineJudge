@@ -60,9 +60,9 @@
                         <li>
                             <a class="J_menuItem" href="${ctx}/page/userQuestions" data-index="0">试题展示</a>
                         </li>
-                        <li>
-                            <a class="J_menuItem" href="${ctx}/user/add" data-index="0">在线测试</a>
-                        </li>
+                        <%--<li>--%>
+                            <%--<a class="J_menuItem" href="${ctx}/page/userPretice" data-index="0">在线测试</a>--%>
+                        <%--</li>--%>
                     </ul>
                 </li>
             </ul>

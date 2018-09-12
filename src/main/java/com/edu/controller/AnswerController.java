@@ -2,6 +2,7 @@ package com.edu.controller;
 
 
 import com.edu.bean.Answer;
+import com.edu.bean.User;
 import com.edu.service.AnswerService;
 import com.edu.util.ExcelUtil;
 import com.edu.util.R;
@@ -11,6 +12,8 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -96,6 +99,28 @@ public class AnswerController {
         workbook.write(fileOutputStream);
         fileOutputStream.close();
         return R.ok("导出成功！");
+    }
+
+    @GetMapping("/display/{questionId}")
+    public R display(@PathVariable("questionId") Integer questionId, HttpServletRequest request){
+        //获取session里的登录状态
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("user");
+        System.out.println(user);
+        Integer userId = user.getUserId();
+        System.out.println("userId="+userId);
+        System.out.println("questionId="+questionId);
+        List<Answer> answers = answerService.selectAnswerByUserQuestion(userId, questionId);
+        System.out.println(answers);
+        Answer answer = answers.get(0);
+        System.out.println(answer);
+        return R.ok().put("answer",answer);
+    }
+
+    @PostMapping("/insertOrUpdate")
+    public R insertOrUpdate(HttpServletRequest request){
+
+        return R.ok();
     }
 }
 

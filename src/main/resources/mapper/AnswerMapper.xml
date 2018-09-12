@@ -49,6 +49,9 @@
         inner join question
         on answer.question_id=question.question_id
     </select>
+    <select id="selectAnswerByUserQuestion" resultType="com.edu.bean.Answer">
+        select * from answer where user_id = #{userId} and question_id = #{questionId}
+    </select>
 
     <!--<select id="selectAnswerUserQuestion" resultMap="AnswerUserQuestionResultMap">-->
         <!--select * from answer-->

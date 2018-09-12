@@ -90,12 +90,14 @@
             title: '测试数据3',
         },{
             field: 'caozuo',
-            title: '答题',
+            title: '答题/查看',
             formatter:function(v1,v2,v3){
-                return ['<a class="edit" href="javascript:void(0)" title="Like">',
+                return ['<a class="pretice" href="javascript:void(0)" title="pretice">',
                     '<i class="fa fa-pencil"></i>',
-                    '</a>',
-                    ].join('');
+                    '</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+                    '<a class="display" href="javascript:void(0)" title="display">',
+                    '<i class="glyphicon glyphicon-eye-open"></i>',
+                    '</a>'].join('');
             },
             events:'caocuoEvents'
         }],
@@ -110,13 +112,21 @@
         queryParamsType:''
     });
     window.caocuoEvents = {
-        'click .edit': function (e, value, row) {
+        'click .pretice': function (e, value, row) {
+            <%--window.location.href='${ctx}/page/pretice/' + row['questionId'];--%>
             layer.open({
                 type: 2,
                 area: ['800px', '500px'],
-                content: '${ctx}/user/preUpdate/' + row['id'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                content: '${ctx}/page/pretice/' + row['questionId'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
             });
         },
+        'click .display': function (e, value, row) {
+            layer.open({
+                type: 2,
+                area: ['800px', '500px'],
+                content: '${ctx}/page/display/' + row['questionId'] //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+            });
+        }
     };
 </script>
 </html>

@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface AnswerService extends IService<Answer> {
     List<Answer> selectAnswerUserQuestion();
+    List<Answer> selectAnswerByUserQuestion(Integer userId, Integer questionId);
 }

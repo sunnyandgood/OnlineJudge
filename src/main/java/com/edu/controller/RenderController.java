@@ -109,4 +109,19 @@ public class RenderController {
     public String adminUp(){
         return "admin/upload/admin_up";
     }
+
+    @GetMapping("userPretice")
+    public String userPretice(){
+        return "user/user_pretice";
+    }
+
+    @GetMapping("/display/{id}")
+    public String display(){
+        return "user/display/display";
+    }
+
+    @GetMapping("/pretice/{id}")
+    public String pretice(){
+        return "user/pretice/pretice";
+    }
 }

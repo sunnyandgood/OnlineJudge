@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface AnswerMapper extends BaseMapper<Answer> {
     List<Answer> selectAnswerUserQuestion();
+    List<Answer> selectAnswerByUserQuestion(Integer userId, Integer questionId);
 }
