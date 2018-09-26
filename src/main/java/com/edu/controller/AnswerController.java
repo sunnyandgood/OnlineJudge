@@ -115,9 +115,39 @@ public class AnswerController {
         return R.ok().put("answer",answer);
     }
 
-    @PostMapping("/insertOrUpdate")
-    public R insertOrUpdate(HttpServletRequest request){
+    @PostMapping("/insertOrUpdate/{questionId}")
+    public R insertOrUpdate(@PathVariable("questionId") Integer questionId,HttpServletRequest request){
+        //获取session里的登录状态
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("user");
+        Integer userId = user.getUserId();
 
+//        String[] questionTitles = request.getParameterValues("questionTitle");
+//        System.out.println("questionTitles[0]"+questionTitles[0]);
+
+        String[] codes = request.getParameterValues("code1");
+        System.out.println("codes[0]"+codes[0]);
+
+//        Answer answer = new Answer();
+//        answer.setUserId(userId);
+//        answer.setQuestionId(questionId);
+//        answer.setAnswerResult(codes[0]);
+//        answer.setAnswerTime(new Date());
+//
+//        Answer answer1 = answerService.selectAnswerByUserQuestion(userId, questionId);
+//        boolean insert = false;
+//        if(answer1!=null){
+//            answer.setAnswerId(answer1.getAnswerId());
+//            insert = answerService.updateById(answer);
+//        }else {
+//            insert = answerService.insert(answer);
+//        }
+//
+//        if(insert){
+//            return R.ok("操作成功!");
+//        }else {
+//            return R.error("操作失败！");
+//        }
         return R.ok();
     }
 }

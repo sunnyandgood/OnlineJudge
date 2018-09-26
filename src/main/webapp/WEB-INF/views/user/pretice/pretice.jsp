@@ -29,7 +29,7 @@
                         题目：<input type="text" class="form-control"  name="questionTitle" readonly="readonly">
                         <br>
                         在此编辑答案：
-                        <textarea id="code1"></textarea>
+                        <textarea id="code1" name="code1"></textarea>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -72,7 +72,7 @@
         })
     });
     function up() {
-        $.post('${ctx}/answer/insertOrUpdate',$('form').serialize(),function (r) {
+        $.post('${ctx}/answer/insertOrUpdate/' + questionId ,$('form').serialize(),function (r) {
             if(r.code==200){
                 parent.$('#table').bootstrapTable('refresh');
                 var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引

@@ -5,6 +5,8 @@
   Time: 18:08
   To change this template use File | Settings | File Templates.
 --%>
+<%--<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 4.01 Transitional//EN">--%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"  scope="session"/>
@@ -24,12 +26,12 @@
         <div><%-- class="col-sm-6"--%>
             <div class="ibox ">
                 <div  class="ibox-content">
-                    <form  class="form-horizontal" method="post">
+                    <form  class="form-horizontal" method="post" id="form1">
                         <%--<p class="m-b-lg" id="questionTitle"></p>--%>
                         题目：<input type="text" class="form-control"  name="questionTitle" readonly="readonly">
                         <br>
                         答案：
-                        <textarea id="code1" readonly="readonly" name="answerResult"></textarea>
+                        <textarea id="code1" readonly="readonly" name="answerResult"></textarea><%--name="answerResult"--%>
                     </form>
                 </div>
             </div>
@@ -54,7 +56,13 @@
     //查询选择的答案信息
     $.get('${ctx}/answer/display/'+ questionId ,function (r) {
         a = r.answer;
-        $('[name=answerResult]').val(a.answerResult);
+        // $('[name=answerResult]').val(a.answerResult);
+        console.log(a.answerResult);
+        // $("#code1").val(a.answerResult);
+        // $("#answerResult").val(a.answerResult);
+        // document.getElementById("code1").innerText = a.answerResult;
+        document.getElementById("code1").value = a.answerResult;
+        // document.getElementsByName("answerResult").innerText = a.answerResult;
     });
 
     $(document).ready(function () {
